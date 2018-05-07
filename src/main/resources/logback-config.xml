@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds" debug="false" packagingData="true">
+	<!-- <include resource="org/springframework/boot/logging/logback/base.xml" /> -->
+	<jmxConfigurator/>
+
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/spring.log}" />
+
+	<!--日志文件存放目录 -->
+	<property name="LOG_HOME" value="./logs" />
+	<!--日志文件保留天数 -->
+	<property name="LOG_MAX_HISTORY" value="3650" />
+
+	<!-- 控制台输出日志 -->
+	<include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+	<!-- ERROR级别日志 -->
+	<appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/error/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>${LOG_MAX_HISTORY}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- INFO级别日志 -->
+	<appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/info/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>${LOG_MAX_HISTORY}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<!-- ACCESS日志 -->
+	<appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/catalina/catalina.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>${LOG_MAX_HISTORY}</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="ERROR" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="ACCESS" />
+	</root>
+</configuration>

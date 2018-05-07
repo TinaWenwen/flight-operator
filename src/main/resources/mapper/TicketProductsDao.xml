@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huoli.flight.operator.dao.TicketProductsDao">
+
+    <sql id="queryItems">
+        SELECT
+          ID id, AIRLINE airLine, PROCODE proCode, PRONAME proName, ALLSEE allSee, ALLBUY allBuy, SUBFLAG subFlag, PRIORITY priority,
+          FXFLAG fxFlag, RULEID ruleId, TAGFLAG tagFlag, APPLYFLAG applyFlag, DATASRC dataSrc, BOOKSRC bookSrc, SUBCOUNT subCount,
+          FXCOUNT fxCount, USERINFO userInfo, SHOWTXT showTxt, TAGNAME tagName, TAGCOLOR tagColor, ICON icon, USERTYPE userType,
+          STATUS status, BOOKPARAM bookParam, GIFTPACKAGE giftPackage, LINKTXT linkTxt, LINKURL linkUrl, APPTYPE appType,
+          EXUSER exUser, TRIPTYPE tripType, SALECONTROL saleControl, CKBUYER ckBuyer, CREATETIME createTime
+        FROM
+          TICKET_PRODUCTS
+        WHERE
+          1=1
+    </sql>
+
+    <select id="queryByCondition" resultType="TicketProducts">
+        <include refid="queryItems"></include>
+        <if test="airLine != '' and airLine != null">
+            AND AIRLINE LIKE CONCAT(CONCAT('%', #{airLine}, '%'))
+        </if>
+        <if test="dataSrc != '' and dataSrc != null">
+            AND DATASRC LIKE CONCAT(CONCAT('%', #{dataSrc}, '%'))
+        </if>
+        <if test="bookSrc != '' and bookSrc != null">
+            AND BOOKSRC LIKE CONCAT(CONCAT('%', #{bookSrc}, '%'))
+        </if>
+        <if test="status == 0 or status == 1">
+            AND STATUS = #{status}
+        </if>
+        <if test="sort == 1">
+            ORDER BY CREATETIME DESC
+        </if>
+    </select>
+
+    <select id="queryById" resultType="TicketProducts">
+        <include refid="queryItems"></include>
+        AND ID=#{id}
+    </select>
+
+    <update id="update" parameterType="TicketProducts">
+        UPDATE TICKET_PRODUCTS
+        <set>
+            <if test="airLine != null">
+                AIRLINE=#{airLine},
+            </if>
+            <if test="proCode != null">
+                PROCODE=#{proCode},
+            </if>
+            <if test="proName != null">
+                PRONAME=#{proName},
+            </if>
+            <if test="allSee == 0 or allSee == 1">
+                ALLSEE=#{allSee},
+            </if>
+            <if test="allBuy == 0 or allBuy == 1">
+                ALLBUY=#{allBuy},
+            </if>
+            <if test="subFlag == 0 or subFlag == 1">
+                SUBFLAG=#{subFlag},
+            </if>
+            <if test="priority == 0 or priority == 1 or priority == 2 or priority == 3 or priority == 4">
+                PRIORITY=#{priority},
+            </if>
+            <if test="fxFlag == 0 or fxFlag == 1">
+                FXFLAG=#{fxFlag},
+            </if>
+            <if test="ruleId != null">
+                RULEID=#{ruleId},
+            </if>
+            <if test="tagFlag == 0 or tagFlag == 1">
+                TAGFLAG=#{tagFlag},
+            </if>
+            <if test="applyFlag == 0 or applyFlag == 1">
+                APPLYFLAG=#{applyFlag},
+            </if>
+            <if test="dataSrc != null">
+                DATASRC=#{dataSrc},
+            </if>
+            <if test="bookSrc != null">
+                BOOKSRC=#{bookSrc},
+            </if>
+            <if test="subCount != null">
+                SUBCOUNT=#{subCount},
+            </if>
+            <if test="fxCount != null">
+                FXCOUNT=#{fxCount},
+            </if>
+            <if test="userInfo != null">
+                USERINFO=#{userInfo},
+            </if>
+            <if test="showTxt != null">
+                SHOWTXT=#{showTxt},
+            </if>
+            <if test="tagName != null">
+                TAGNAME=#{tagName},
+            </if>
+            <if test="tagColor != null">
+                TAGCOLOR=#{tagColor},
+            </if>
+            <if test="icon != null">
+                ICON=#{icon},
+            </if>
+            <if test="userType == 0 or userType == 1 or userType == 2">
+                USERTYPE=#{userType},
+            </if>
+            <if test="status == 0 or status == 1">
+                STATUS=#{status},
+            </if>
+            <if test="bookParam != null">
+                BOOKPARAM=#{bookParam},
+            </if>
+            <if test="giftPackage != null">
+                GIFTPACKAGE=#{giftPackage},
+            </if>
+            <if test="linkTxt != null">
+                LINKTXT=#{linkTxt},
+            </if>
+            <if test="linkUrl != null">
+                LINKURL=#{linkUrl},
+            </if>
+            <if test="appType != null">
+                APPTYPE=#{appType},
+            </if>
+            <if test="exUser != null">
+                EXUSER=#{exUser},
+            </if>
+            <if test="tripType != null">
+                TRIPTYPE=#{tripType},
+            </if>
+            <if test="saleControl != null">
+                SALECONTROL=#{saleControl},
+            </if>
+            <if test="ckBuyer == 0 or ckBuyer == 1">
+                CKBUYER=#{ckBuyer}
+            </if>
+        </set>
+        WHERE
+          ID=#{id}
+    </update>
+</mapper>

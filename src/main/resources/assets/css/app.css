@@ -1,0 +1,87 @@
+/* Write your styles */
+
+body {
+    font-size: 1.5rem !important;
+}
+
+table {
+    font-size: 14px !important;
+}
+
+td {
+    width: 100%;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.am-hr {
+    margin-top: 0px;
+}
+
+.am-page {
+    float: left;
+    display: inline-flex;
+    margin-left: 18px;
+    margin-top: -32px;
+}
+
+.am-page-pagenum {
+    margin-top: 24px;
+}
+
+.am-page-paging {
+    margin-left: 0px;
+}
+
+.am-pagination-default {
+    margin-left: 0px !important;
+}
+
+.am-page-paging ul {
+    font-size: 1.5rem !important;
+}
+
+.admin-sidebar {
+    width: 230px !important;
+}
+
+.admin-sidebar-sub {
+    background: #e6e6e6 !important;
+    padding-left: 5px !important;
+}
+
+@media only screen and (max-width: 640px) {
+    .admin-sidebar {
+        width: 0px !important;
+    }
+}
+
+.am-offcanvas-bar {
+    width: 230px !important;
+}
+
+.am-table {
+    table-layout: fixed !important;
+}
+
+.am-form-content {
+    width: 900px
+}
+
+.admin-content,
+.admin-sidebar {
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.am-padding-left {
+    height: 12px !important;
+}
+
+.error {
+    color: #dd514c;
+}

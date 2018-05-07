@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    druid: 
+      url: jdbc:mysql://103.199.228.187:3306/skyhotel?useOldAliasMetadataBehavior=true&amp;characterEncoding=gbk
+      username: order
+      password: order123
+      filters: stat,log4j
+      web-stat-filter: # WebStatFilter配置
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet: # StatViewServlet配置
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin123
+        login-password: 789456
+
+h5:
+  activity:
+    url: https://wtest.133.cn/dev/leibo/hangban/vue/promotion/ticketListModel?hid=%s&actId=%s&national=1

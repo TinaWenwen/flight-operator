@@ -1,0 +1,48 @@
+# app
+server:
+  port: 8270
+  context-path: /operator
+  error.path: /error
+
+# spring
+spring:
+  application:
+    name: flight-operator
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+  profiles:
+    active: dev
+  output.ansi.enabled: DETECT
+  jackson:
+    default-property-inclusion: non_null
+  mvc:
+    favicon:
+      enabled: false
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+# logging
+logging:
+  level:
+    root: info
+    com.huoli.flight.operator.dao: debug
+  config: classpath:logback-config.xml
+
+# mybatis
+mybatis:
+  config-location: classpath:/mybatis-config.xml
+  type-aliases-package: com.huoli.flight.operator.domain.po
+  mapper-locations: classpath:/mapper/*Dao.xml
+
+# pagehelper
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  helper-dialect: mysql
+

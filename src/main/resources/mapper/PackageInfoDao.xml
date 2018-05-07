@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huoli.flight.operator.dao.PackageInfoDao">
+
+    <sql id="queryItems">
+        SELECT
+          ID id, NAME name, CODE code, DETAIL detail, STARTDATE startDate, ENDDATE endDate, TYPE type, STATUS status,
+          CREATETIME createTime
+        FROM
+          PACKAGE_INFO
+        WHERE
+          1=1
+    </sql>
+
+    <select id="queryByCondition" resultType="PackageInfo">
+        <include refid="queryItems"></include>
+    </select>
+
+
+    <select id="queryById" resultType="PackageInfo">
+        <include refid="queryItems"></include>
+        AND ID = #{id}
+    </select>
+
+    <update id="update" parameterType="PackageInfo">
+        UPDATE
+          PACKAGE_INFO
+        SET
+          NAME=#{name}, CODE=#{code}, DETAIL=#{detail}, STARTDATE=#{startDate}, ENDDATE=#{endDate}, TYPE=#{type}, STATUS=#{status}
+        WHERE
+          ID=#{id}
+    </update>
+</mapper>

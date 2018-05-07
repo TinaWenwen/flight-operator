@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huoli.flight.operator.dao.TicketActivityDao">
+
+    <select id="queryByCondition" resultType="TicketActivity">
+        SELECT *
+        FROM
+        TICKET_ACTIVITY
+        WHERE 1 = 1
+        <if test="title != '' and title != null">
+            AND title LIKE CONCAT(CONCAT('%', #{title}, '%'))
+        </if>
+        <if test="status == 0 or status == 1 ">
+            AND status = #{status}
+        </if>
+        AND type = #{type}
+        ORDER BY id DESC
+    </select>
+
+    <insert id="insert" parameterType="TicketActivity">
+        INSERT INTO
+          TICKET_ACTIVITY (title, data_code, status, type, data, begin_time, end_time)
+        VALUES
+          (#{title}, #{dataCode}, #{status}, #{type}, #{data}, #{beginTime}, #{endTime})
+    </insert>
+
+    <update id="update" parameterType="TicketActivity">
+        UPDATE
+          TICKET_ACTIVITY
+        SET
+          title=#{title}, data_code=#{dataCode}, data=#{data}, begin_time=#{beginTime}, end_time=#{endTime}
+        WHERE
+          id=#{id}
+    </update>
+</mapper>
