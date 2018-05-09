@@ -84,7 +84,7 @@
                         <label class="am-u-sm-3 am-form-label">返现金额</label>
                         <div class="am-u-sm-9">
                             <input type="number" placeholder="如果有返现，必填" id="pprice" name="pprice"
-                                   value="${gift.pprice >= 0 ? '' : gift.pprice}">
+                                   value="${gift.pprice}">
                         </div>
                     </div>
 

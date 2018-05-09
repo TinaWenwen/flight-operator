@@ -42,7 +42,7 @@
                     <table class="am-table am-table-bordered am-table-striped">
                         <thead>
                         <tr>
-                            <th width="3%">ID</th>
+                            <th width="4%">ID</th>
                             <th>活动名称</th>
                             <th width="10%">数据标识</th>
                             <th width="14%">创建时间</th>

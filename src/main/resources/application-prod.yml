@@ -2,8 +2,8 @@ spring:
   datasource:
     druid: 
       url: jdbc:mysql://mysql-m.hbgj.huoli.local:3306/skyhotel?useOldAliasMetadataBehavior=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=utf8&amp;autoReconnect=true
-      username: tools_yy
-      password: yyts20180307#
+      username: 111
+      password: 111
       filters: stat,log4j
       web-stat-filter: # WebStatFilter配置
         enabled: true

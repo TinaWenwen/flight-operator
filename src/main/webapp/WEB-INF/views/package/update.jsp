@@ -66,7 +66,7 @@
                         <input type="radio" name="status" value="1" ${pkg.status == 1 ? "checked" : ""}>
                         生效
                         <input type="radio" name="status" value="0" ${pkg.status == 0 ? "checked" : ""}>
-                        生效
+                        失效
                     </div>
                 </div>
 

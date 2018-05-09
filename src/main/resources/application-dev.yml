@@ -1,9 +1,9 @@
 spring:
   datasource:
     druid: 
-      url: jdbc:mysql://103.199.228.187:3306/skyhotel?useOldAliasMetadataBehavior=true&amp;characterEncoding=gbk
-      username: order
-      password: order123
+      url: jdbc:mysql://localhost:3306/operator
+      username: root
+      password: xuxiaoyan
       filters: stat,log4j
       web-stat-filter: # WebStatFilter配置
         enabled: true

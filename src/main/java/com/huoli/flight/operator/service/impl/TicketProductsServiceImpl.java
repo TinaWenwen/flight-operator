@@ -182,8 +182,9 @@ public class TicketProductsServiceImpl implements TicketProductsService {
             giftPackage.setPcode(arr[1]);
             giftPackage.setPtype(arr[2]);
             giftPackage.setPcount(StringUtils.defaultString(arr[3], "0"));
-            giftPackage.setPprice(arr[4]);
-            giftPackage.setPfxtype(StringUtils.defaultString(arr[5], "1"));
+            giftPackage.setPfxtype(StringUtils.defaultString(arr[4], "1"));
+            giftPackage.setPprice(arr[5]);
+
         }
         return giftPackage;
     }
@@ -198,8 +199,8 @@ public class TicketProductsServiceImpl implements TicketProductsService {
         sb.append(StringUtils.defaultString(giftPackage.getPcode(), "")).append(",");
         sb.append(StringUtils.defaultString(giftPackage.getPtype(), "")).append(",");
         sb.append(StringUtils.defaultString(giftPackage.getPcount(), "")).append(",");
-        sb.append(StringUtils.defaultString(giftPackage.getPprice(), "")).append(",");
-        sb.append(StringUtils.defaultString(giftPackage.getPfxtype(), ""));
+        sb.append(StringUtils.defaultString(giftPackage.getPfxtype(), "")).append(",");
+        sb.append(StringUtils.defaultString(giftPackage.getPprice(), ""));
         TicketProducts ticketProducts = new TicketProducts();
         ticketProducts.setId(id);
         if (StringUtils.isBlank(giftPackage.getPcode())) {

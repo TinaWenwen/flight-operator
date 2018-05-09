@@ -1,10 +1,12 @@
 package com.huoli.flight.operator.domain.po;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@NoArgsConstructor
 public class PackageInfo {
 
     private Integer id;

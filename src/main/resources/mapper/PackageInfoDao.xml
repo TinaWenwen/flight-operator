@@ -5,7 +5,7 @@
     <sql id="queryItems">
         SELECT
           ID id, NAME name, CODE code, DETAIL detail, STARTDATE startDate, ENDDATE endDate, TYPE type, STATUS status,
-          CREATETIME createTime
+          BUYTYPE buyType, RFDFLAG rfdFlag, CHGFLAG chgFlag, CREATETIME createTime
         FROM
           PACKAGE_INFO
         WHERE
@@ -26,7 +26,7 @@
         UPDATE
           PACKAGE_INFO
         SET
-          NAME=#{name}, CODE=#{code}, DETAIL=#{detail}, STARTDATE=#{startDate}, ENDDATE=#{endDate}, TYPE=#{type}, STATUS=#{status}
+          NAME=#{name}, CODE=#{code}, DETAIL=#{detail}, STARTDATE=#{startDate}, ENDDATE=#{endDate}, TYPE=#{type}, STATUS=#{status}, BUYTYPE=#{buyType}, RFDFLAG=#{rfdFlag}, CHGFLAG=#{chgFlag}
         WHERE
           ID=#{id}
     </update>
